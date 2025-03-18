@@ -35,7 +35,7 @@ export default function Navbar() {
         <a href="#home" className="text-xl font-semibold z-10">
           <span className="sr-only">Quantdesign</span>
           <img 
-            src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
+            src="https://ibb.co/BHMqTCYt" 
             alt="Quantdesign Logo" 
             className="h-7"
           />
