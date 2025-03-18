@@ -5,15 +5,15 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex flex-col justify-center items-center pt-16 relative overflow-hidden bg-quantbeige-50"
+      className="min-h-screen flex flex-col justify-center items-center pt-16 relative overflow-hidden bg-quantbeige-100"
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="mb-8">
             <img 
-              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
+              src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
               alt="Quantdesign Logo" 
-              className="h-16 md:h-24" 
+              className="h-20 md:h-28" 
             />
           </div>
           
@@ -44,9 +44,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-quantbeige-100 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-quantbeige-100 rounded-full blur-3xl opacity-50 translate-x-1/3 translate-y-1/3"></div>
+      {/* Decorative elements - updated with darker colors */}
+      <div className="absolute top-1/2 left-0 w-64 h-64 bg-quantbeige-200 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-quantbeige-200 rounded-full blur-3xl opacity-50 translate-x-1/3 translate-y-1/3"></div>
       
       {/* Scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">

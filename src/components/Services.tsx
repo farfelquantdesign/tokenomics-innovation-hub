@@ -39,7 +39,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-quantbeige-100">
+    <section id="services" className="py-24 bg-quantbeige-50">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">Our Services</h2>
@@ -56,7 +56,7 @@ export default function Services() {
               className="grid md:grid-cols-2 gap-8 items-center"
             >
               <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                <div className={`aspect-video ${service.image} rounded-sm flex items-center justify-center shadow-sm`}>
+                <div className={`aspect-video bg-gradient-to-br from-quantbeige-100 to-quantbeige-200 rounded-sm flex items-center justify-center shadow-sm`}>
                   <div className="font-medium text-2xl text-quantblack/80">{service.title}</div>
                 </div>
               </div>
@@ -94,15 +94,15 @@ export default function Services() {
               </p>
               <a 
                 href="#about" 
-                className="inline-block bg-quantbeige-50 text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-100 transition-all duration-300"
+                className="inline-block bg-quantbeige-100 text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-200 transition-all duration-300"
               >
                 Learn More
               </a>
             </div>
             <div className="hidden md:block">
               <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center">
-                <div className="w-2/3 h-2/3 border-2 border-quantbeige-50/20 rounded-full flex items-center justify-center">
-                  <div className="w-1/2 h-1/2 border-2 border-quantbeige-50/30 rounded-full"></div>
+                <div className="w-2/3 h-2/3 border-2 border-quantbeige-100/20 rounded-full flex items-center justify-center">
+                  <div className="w-1/2 h-1/2 border-2 border-quantbeige-100/30 rounded-full"></div>
                 </div>
               </div>
             </div>
