@@ -7,7 +7,6 @@ const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -54,11 +53,11 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="#about"
             className="bg-quantblack text-quantbeige px-5 py-2 rounded-sm text-sm font-medium 
                      hover:bg-quantblack-800 transition-all duration-300"
           >
-            Get Started
+            Learn More
           </a>
         </div>
 
@@ -94,11 +93,11 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="#about"
             className="bg-quantblack text-quantbeige px-5 py-2 rounded-sm text-xl font-medium"
             onClick={() => setIsOpen(false)}
           >
-            Get Started
+            Learn More
           </a>
         </div>
       </nav>

@@ -9,13 +9,17 @@ export default function Hero() {
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <div className="inline-block mb-3 rounded-full px-3 py-1 text-xs font-medium bg-quantbeige-200">
-            <span className="opacity-70">First Integrated Token Solutions Firm</span>
+          <div className="mb-8">
+            <img 
+              src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
+              alt="Quantdesign Logo" 
+              className="h-16 md:h-24" // Increased logo size
+            />
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight animate-fade-in">
-            Precision Engineering For <br className="hidden sm:block" />
-            <span className="font-semibold">Digital Assets</span>
+            The First Integrated<br className="hidden sm:block" />
+            <span className="font-semibold">Token Solutions Firm</span>
           </h1>
           
           <p className="text-lg md:text-xl text-quantblack/70 max-w-2xl mx-auto mb-10 animate-fade-in animation-delay-200">

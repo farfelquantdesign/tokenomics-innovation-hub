@@ -3,36 +3,36 @@ import { ArrowRight } from "lucide-react";
 
 const services = [
   {
-    title: "Tokenomics Design",
-    description: "Comprehensive token economic models designed for sustainability and value accrual. We analyze supply mechanisms, utility functions, and governance structures.",
+    title: "Token Issuance",
+    description: "Leverages our data-driven approach and extensive experience to manage and execute a token issuance by running our Core Processes and executing over a 6 to 15 week engagement to manage the process and have a clean launch.",
     image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
     features: [
-      "Supply & distribution planning",
-      "Utility & value accrual mechanisms",
-      "Governance structure design",
-      "Incentive alignment analysis"
+      "6-15 week engagement timeline",
+      "Data-driven approach",
+      "Complete launch management",
+      "Core process implementation"
     ]
   },
   {
-    title: "Market Making Setup",
-    description: "Strategic liquidity provision and market making infrastructure designed to ensure healthy trading environments for your token.",
+    title: "Liquid Token Improvement",
+    description: "Designed for currently liquid, tradeable tokens that require some improvements in their token design, growth strategy, market making, and any others of our integrated processes.",
     image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
     features: [
-      "Liquidity pool strategy",
-      "Market maker selection & setup",
-      "Slippage optimization",
-      "Trading pair analysis"
+      "Token design optimization",
+      "Growth strategy refinement",
+      "Market making enhancement",
+      "Process integration"
     ]
   },
   {
-    title: "Token Launch Strategy",
-    description: "End-to-end planning for successful token launches, from initial offering structure to post-launch support and market stabilization.",
+    title: "Quantdesign Incubator",
+    description: "Designed for projects looking for long-term support and an in depth engagement that includes the full suite of Quantdesign services, integrating the Quantdesign team with the project. Includes clients led by a strong, purposeful team that is looking to dramatically grow the product towards a successful token launch in the near future.",
     image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
     features: [
-      "Launch mechanism selection",
-      "Price discovery strategy",
-      "Vesting & lockup implementation",
-      "Post-launch support plan"
+      "Long-term project support",
+      "Full suite of services",
+      "Team integration",
+      "Growth-focused strategies"
     ]
   }
 ];
@@ -74,7 +74,7 @@ export default function Services() {
                   ))}
                 </ul>
                 <a 
-                  href="#contact" 
+                  href="#about" 
                   className="inline-flex items-center text-quantblack font-medium hover:translate-x-1 transition-transform duration-300"
                 >
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
@@ -93,10 +93,10 @@ export default function Services() {
                 and market infrastructure.
               </p>
               <a 
-                href="#contact" 
+                href="#about" 
                 className="inline-block bg-quantbeige text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-200 transition-all duration-300"
               >
-                Get in Touch
+                Learn More
               </a>
             </div>
             <div className="hidden md:block">
