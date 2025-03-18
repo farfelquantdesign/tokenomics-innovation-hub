@@ -27,7 +27,7 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-navbar duration-500",
         scrolled 
-          ? "bg-quantbeige-100/90 backdrop-blur-md shadow-sm" 
+          ? "bg-quantbeige-50/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
       )}
     >
@@ -35,7 +35,7 @@ export default function Navbar() {
         <a href="#home" className="text-xl font-semibold z-10">
           <span className="sr-only">Quantdesign</span>
           <img 
-            src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
+            src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
             alt="Quantdesign Logo" 
             className="h-7"
           />
@@ -54,7 +54,7 @@ export default function Navbar() {
           ))}
           <a
             href="#about"
-            className="bg-quantblack text-quantbeige-100 px-5 py-2 rounded-sm text-sm font-medium 
+            className="bg-quantblack text-quantbeige px-5 py-2 rounded-sm text-sm font-medium 
                      hover:bg-quantblack-800 transition-all duration-300"
           >
             Learn More
@@ -78,7 +78,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-quantbeige-100 z-0 flex flex-col items-center justify-center space-y-8 transition-all duration-500 ease-in-out transform",
+            "fixed inset-0 bg-quantbeige-50 z-0 flex flex-col items-center justify-center space-y-8 transition-all duration-500 ease-in-out transform",
             isOpen ? "opacity-100 visible" : "opacity-0 invisible"
           )}
         >
@@ -94,7 +94,7 @@ export default function Navbar() {
           ))}
           <a
             href="#about"
-            className="bg-quantblack text-quantbeige-100 px-5 py-2 rounded-sm text-xl font-medium"
+            className="bg-quantblack text-quantbeige px-5 py-2 rounded-sm text-xl font-medium"
             onClick={() => setIsOpen(false)}
           >
             Learn More

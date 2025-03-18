@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,18 +64,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				quantbeige: {
-					DEFAULT: '#e6dfd2', // Slightly darker base beige
-					50: '#f0ece3',     // Lighter beige for backgrounds
-					100: '#e6dfd2',    // Main beige color (matched to logo background)
-					200: '#d9ceb9',    // Slightly darker
-					300: '#ccbea0',    // Even darker
-					400: '#bfae88',    // Continued darkening
-					500: '#b29e70',    // ... (keeping the rest of the scale)
-					600: '#a48e59',
-					700: '#967e42',
-					800: '#7d6738',
-					900: '#655330',
-					950: '#3b2f1c',
+					DEFAULT: '#f5f2ea',
+					50: '#f9f7f2',
+					100: '#f5f2ea',
+					200: '#ede7d9',
+					300: '#e0d5c0',
+					400: '#d0bd9f',
+					500: '#bfa581',
+					600: '#b08f6a',
+					700: '#9c8062',
+					800: '#806954',
+					900: '#6a5749',
+					950: '#3b2f26',
 				},
 				quantblack: {
 					DEFAULT: '#1a1a1a',

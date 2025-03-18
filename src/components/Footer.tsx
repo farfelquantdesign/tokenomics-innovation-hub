@@ -5,12 +5,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-quantbeige-100 py-16">
+    <footer className="bg-quantbeige py-16">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <img 
-              src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
+              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
               alt="Quantdesign Logo" 
               className="h-8 mb-6"
             />
