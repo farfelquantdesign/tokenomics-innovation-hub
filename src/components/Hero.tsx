@@ -10,21 +10,20 @@ export default function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="mb-8">
-            <img 
-              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
+            <img src="https://ibb.co/BHMqTCYt" 
               alt="Quantdesign Logo" 
-              className="h-16 md:h-24" 
-            />
+              cclassName="h-16 md:h-24" 
+              />
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight animate-fade-in">
             The First Integrated<br className="hidden sm:block" />
-            <span className="font-semibold">Token Solutions Firm</span>
+            Token Solutions Firm
           </h1>
           
           <p className="text-lg md:text-xl text-quantblack/70 max-w-2xl mx-auto mb-10 animate-fade-in animation-delay-200">
-            Productized service packages for new token issuances 
-            and existing liquid tokens, designed with analytical precision.
+            Quantdesign is a full-stack provider of tailored processes focused on enhancing long term growth and creating sustainable value<br className="hidden sm:block" /> 
+            for new token issuances and existing liquid assets.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in animation-delay-300">
@@ -38,7 +37,7 @@ export default function Hero() {
               href="#about" 
               className="border border-quantblack/20 px-7 py-3 rounded-sm hover:bg-quantblack/5 transition-all duration-300"
             >
-              Our Approach
+              About Us
             </a>
           </div>
         </div>
