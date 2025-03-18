@@ -5,7 +5,7 @@ const services = [
   {
     title: "Token Issuance",
     description: "Leverages our data-driven approach and extensive experience to manage and execute a token issuance by running our Core Processes and executing over a 6 to 15 week engagement to manage the process and have a clean launch.",
-    image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
+    image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
     features: [
       "6-15 week engagement timeline",
       "Data-driven approach",
@@ -16,7 +16,7 @@ const services = [
   {
     title: "Liquid Token Improvement",
     description: "Designed for currently liquid, tradeable tokens that require some improvements in their token design, growth strategy, market making, and any others of our integrated processes.",
-    image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
+    image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
     features: [
       "Token design optimization",
       "Growth strategy refinement",
@@ -27,7 +27,7 @@ const services = [
   {
     title: "Quantdesign Incubator",
     description: "Designed for projects looking for long-term support and an in depth engagement that includes the full suite of Quantdesign services, integrating the Quantdesign team with the project. Includes clients led by a strong, purposeful team that is looking to dramatically grow the product towards a successful token launch in the near future.",
-    image: "bg-gradient-to-br from-quantbeige-100 to-quantbeige-200",
+    image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
     features: [
       "Long-term project support",
       "Full suite of services",
@@ -39,7 +39,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-quantbeige">
+    <section id="services" className="py-24 bg-quantbeige-100">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">Our Services</h2>
@@ -56,7 +56,7 @@ export default function Services() {
               className="grid md:grid-cols-2 gap-8 items-center"
             >
               <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                <div className={`aspect-video ${service.image} rounded-sm flex items-center justify-center`}>
+                <div className={`aspect-video ${service.image} rounded-sm flex items-center justify-center shadow-sm`}>
                   <div className="font-medium text-2xl text-quantblack/80">{service.title}</div>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="mt-20 bg-quantblack text-quantbeige p-10 md:p-16 rounded-sm">
+        <div className="mt-20 bg-quantblack text-quantbeige-50 p-10 md:p-16 rounded-sm">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-medium mb-6">Ready to transform your token strategy?</h3>
@@ -94,15 +94,15 @@ export default function Services() {
               </p>
               <a 
                 href="#about" 
-                className="inline-block bg-quantbeige text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-200 transition-all duration-300"
+                className="inline-block bg-quantbeige-50 text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-100 transition-all duration-300"
               >
                 Learn More
               </a>
             </div>
             <div className="hidden md:block">
               <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center">
-                <div className="w-2/3 h-2/3 border-2 border-quantbeige/20 rounded-full flex items-center justify-center">
-                  <div className="w-1/2 h-1/2 border-2 border-quantbeige/30 rounded-full"></div>
+                <div className="w-2/3 h-2/3 border-2 border-quantbeige-50/20 rounded-full flex items-center justify-center">
+                  <div className="w-1/2 h-1/2 border-2 border-quantbeige-50/30 rounded-full"></div>
                 </div>
               </div>
             </div>

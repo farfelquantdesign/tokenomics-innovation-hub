@@ -26,7 +26,7 @@ const features = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-quantbeige-50">
+    <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">About Quantdesign</h2>
@@ -40,9 +40,9 @@ export default function About() {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white p-8 rounded-sm shadow-sm border border-quantbeige-200 hover:translate-y-[-4px] transition-all duration-300"
+              className="bg-quantbeige-50 p-8 rounded-sm shadow-sm border border-quantbeige-100 hover:translate-y-[-4px] transition-all duration-300"
             >
-              <div className="bg-quantbeige-100 w-12 h-12 flex items-center justify-center rounded-full mb-6">
+              <div className="bg-white w-12 h-12 flex items-center justify-center rounded-full mb-6">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-medium mb-3">{feature.title}</h3>
@@ -51,7 +51,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-20 bg-quantbeige-100 rounded-sm p-8 md:p-12">
+        <div className="mt-20 bg-quantbeige-50 rounded-sm p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-medium mb-6">Our Vision</h3>
@@ -65,19 +65,19 @@ export default function About() {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-200">
+              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
                 <div className="text-3xl font-semibold mb-2">4+</div>
                 <div className="text-quantblack-600">Years of Leadership</div>
               </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-200">
+              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
                 <div className="text-3xl font-semibold mb-2">100+</div>
                 <div className="text-quantblack-600">Projects Delivered</div>
               </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-200">
+              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
                 <div className="text-3xl font-semibold mb-2">$2B+</div>
                 <div className="text-quantblack-600">Assets Designed</div>
               </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-200">
+              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
                 <div className="text-3xl font-semibold mb-2">24/7</div>
                 <div className="text-quantblack-600">Global Support</div>
               </div>
