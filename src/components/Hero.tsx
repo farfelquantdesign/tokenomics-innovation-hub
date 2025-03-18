@@ -11,9 +11,9 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="mb-8">
             <img 
-              src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
+              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
               alt="Quantdesign Logo" 
-              className="h-16 md:h-24" // Increased logo size
+              className="h-16 md:h-24" 
             />
           </div>
           

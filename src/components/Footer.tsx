@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <img 
-              src="/lovable-uploads/9b016fbb-6f08-4c83-954a-44f41685518d.png" 
+              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
               alt="Quantdesign Logo" 
               className="h-8 mb-6"
             />
@@ -39,17 +39,17 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Tokenomics Design
+                  Token Issuance
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Market Making Setup
+                  Liquid Token Improvement
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Token Launch Strategy
+                  Quantdesign Incubator
                 </a>
               </li>
               <li>
