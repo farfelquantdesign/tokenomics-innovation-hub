@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <img 
-              src="/lovable-uploads/309775e7-bf4a-409c-ba27-cb28e12d044f.png" 
+              src="/lovable-uploads/aac68da7-9dd6-49e4-af12-88d51162dbf2.png" 
               alt="Quantdesign Logo" 
               className="h-8 mb-6"
             />

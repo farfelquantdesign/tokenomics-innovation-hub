@@ -10,10 +10,11 @@ export default function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="mb-8">
-            <img src="https://ibb.co/BHMqTCYt" 
+            <img 
+              src="/lovable-uploads/aac68da7-9dd6-49e4-af12-88d51162dbf2.png" 
               alt="Quantdesign Logo" 
-              cclassName="h-16 md:h-24" 
-              />
+              className="h-16 md:h-24" 
+            />
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight animate-fade-in">
