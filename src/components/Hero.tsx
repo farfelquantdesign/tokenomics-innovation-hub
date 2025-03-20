@@ -13,7 +13,7 @@ export default function Hero() {
             <img 
               src="/lovable-uploads/aac68da7-9dd6-49e4-af12-88d51162dbf2.png" 
               alt="Quantdesign Logo" 
-              className="h-16 md:h-24" 
+              className="h-12 md:h-20" 
             />
           </div>
           
