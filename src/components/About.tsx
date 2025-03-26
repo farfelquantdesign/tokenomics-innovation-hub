@@ -32,7 +32,11 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-medium mb-6">About Quantdesign</h2>
           <p className="text-lg text-quantblack-700">
             Founded 4 years ago, Quantdesign has established itself as the industry leader in tokenomics and 
-            market making setup. We bring analytical precision and innovative solutions to the digital asset space.
+            market making setup. We believe in creating sustainable token economies that deliver real value to all stakeholders.
+          </p>
+          <p className="text-lg text-quantblack-700 mt-4">
+            Our team combines deep expertise in finance, mathematics, and blockchain technology to design tokenomics 
+            solutions that stand the test of time and market volatility.
           </p>
         </div>
 
@@ -51,37 +55,22 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-20 bg-quantbeige-50 rounded-sm p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-medium mb-6">Our Vision</h3>
-              <p className="text-quantblack-700 mb-6">
-                At Quantdesign, we envision a world where token engineering is approached with the same rigor as traditional 
-                financial instruments. We believe in creating sustainable token economies that deliver real value to all stakeholders.
-              </p>
-              <p className="text-quantblack-700">
-                Our team combines deep expertise in finance, mathematics, and blockchain technology to design tokenomics 
-                solutions that stand the test of time and market volatility.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
-                <div className="text-3xl font-semibold mb-2">4+</div>
-                <div className="text-quantblack-600">Years of Leadership</div>
-              </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
-                <div className="text-3xl font-semibold mb-2">100+</div>
-                <div className="text-quantblack-600">Projects Delivered</div>
-              </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
-                <div className="text-3xl font-semibold mb-2">$2B+</div>
-                <div className="text-quantblack-600">Assets Designed</div>
-              </div>
-              <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
-                <div className="text-3xl font-semibold mb-2">24/7</div>
-                <div className="text-quantblack-600">Global Support</div>
-              </div>
-            </div>
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
+            <div className="text-3xl font-semibold mb-2">4+</div>
+            <div className="text-quantblack-600">Years of Leadership</div>
+          </div>
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
+            <div className="text-3xl font-semibold mb-2">35+</div>
+            <div className="text-quantblack-600">Projects Supported</div>
+          </div>
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
+            <div className="text-3xl font-semibold mb-2">$7B+</div>
+            <div className="text-quantblack-600">Assets Supported</div>
+          </div>
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
+            <div className="text-3xl font-semibold mb-2">11</div>
+            <div className="text-quantblack-600">Integrated Processes</div>
           </div>
         </div>
       </div>
