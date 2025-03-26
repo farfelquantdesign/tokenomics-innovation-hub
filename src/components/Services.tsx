@@ -1,11 +1,12 @@
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket, TrendingUp, Globe } from "lucide-react";
 
 const services = [
   {
     title: "Token Issuance",
     description: "Leverages our data-driven approach and extensive experience to manage and execute a token issuance by running our Core Processes and executing over a 6 to 15 week engagement to manage the process and have a clean launch.",
     image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
+    icon: Rocket,
     features: [
       "6-15 week engagement timeline",
       "Data-driven approach",
@@ -17,6 +18,7 @@ const services = [
     title: "Liquid Token Improvement",
     description: "Designed for currently liquid, tradeable tokens that require some improvements in their token design, growth strategy, market making, and any others of our integrated processes.",
     image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
+    icon: TrendingUp,
     features: [
       "Token design optimization",
       "Growth strategy refinement",
@@ -28,6 +30,7 @@ const services = [
     title: "Quantdesign Incubator",
     description: "Designed for projects looking for long-term support and an in depth engagement that includes the full suite of Quantdesign services, integrating the Quantdesign team with the project. Includes clients led by a strong, purposeful team that is looking to dramatically grow the product towards a successful token launch in the near future.",
     image: "bg-gradient-to-br from-quantbeige-50 to-quantbeige-100",
+    icon: Globe,
     features: [
       "Long-term project support",
       "Full suite of services",
@@ -56,8 +59,27 @@ export default function Services() {
               className="grid md:grid-cols-2 gap-8 items-center"
             >
               <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                <div className={`aspect-video ${service.image} rounded-sm flex items-center justify-center shadow-sm`}>
-                  <div className="font-medium text-2xl text-quantblack/80">{service.title}</div>
+                <div className={`aspect-video ${service.image} rounded-sm flex items-center justify-center shadow-sm relative overflow-hidden`}>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Pattern background */}
+                    <div className="absolute inset-0 opacity-5">
+                      <div className="absolute inset-0 grid grid-cols-6 grid-rows-6">
+                        {Array.from({ length: 36 }).map((_, i) => (
+                          <div key={i} className="border border-quantblack/10"></div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Icon and title */}
+                    <div className="z-10 flex flex-col items-center justify-center">
+                      <service.icon className="h-16 w-16 text-quantblack/70 mb-4" />
+                      <div className="font-medium text-2xl text-quantblack/80">{service.title}</div>
+                    </div>
+                    
+                    {/* Decorative circle */}
+                    <div className="absolute top-[50%] left-[50%] w-48 h-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-quantblack/10 opacity-30"></div>
+                    <div className="absolute top-[50%] left-[50%] w-64 h-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-quantblack/5 opacity-20"></div>
+                  </div>
                 </div>
               </div>
               <div className={index % 2 === 1 ? "md:order-1" : ""}>
