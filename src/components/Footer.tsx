@@ -1,14 +1,14 @@
 
-import { ArrowUp, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-quantbeige py-16">
+    <footer className="bg-quantbeige py-12">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="col-span-1 md:col-span-1">
             <img 
               src="/lovable-uploads/aac68da7-9dd6-49e4-af12-88d51162dbf2.png" 
               alt="Quantdesign Logo" 
@@ -18,20 +18,6 @@ export default function Footer() {
               The industry leader in tokenomics and market making setup, 
               providing productized service packages for digital assets.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-            </div>
           </div>
 
           <div>
@@ -52,11 +38,6 @@ export default function Footer() {
                   Quantdesign Incubator
                 </a>
               </li>
-              <li>
-                <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Consulting Services
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -66,21 +47,6 @@ export default function Footer() {
               <li>
                 <a href="#about" className="text-quantblack-700 hover:text-quantblack transition-colors">
                   About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Terms of Service
                 </a>
               </li>
             </ul>
