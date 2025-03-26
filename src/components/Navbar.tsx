@@ -52,13 +52,6 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a
-            href="#about"
-            className="bg-quantblack text-quantbeige px-5 py-2 rounded-sm text-sm font-medium 
-                     hover:bg-quantblack-800 transition-all duration-300"
-          >
-            Learn More
-          </a>
         </div>
 
         {/* Mobile Navigation Toggle */}
