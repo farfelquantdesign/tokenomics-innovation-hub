@@ -14,12 +14,6 @@ export default function Footer() {
               <p className="mb-8 text-quantbeige-100">
                 Quantdesign is a referral only business. Reach out and get in touch.
               </p>
-              <a 
-                href="#about" 
-                className="inline-block bg-quantbeige-50 text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-100 transition-all duration-300"
-              >
-                Learn More
-              </a>
             </div>
             <div className="hidden md:block">
               <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center">
