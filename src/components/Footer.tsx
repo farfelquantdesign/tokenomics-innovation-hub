@@ -7,6 +7,30 @@ export default function Footer() {
   return (
     <footer className="bg-quantbeige py-12">
       <div className="container mx-auto px-6">
+        <div className="mb-16 bg-quantblack text-quantbeige-50 p-10 md:p-16 rounded-sm">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-medium mb-6">Trusted Expertise and Seamless Execution</h3>
+              <p className="mb-8 text-quantbeige-100">
+                Quantdesign is a referral only business. Reach out and get in touch.
+              </p>
+              <a 
+                href="#about" 
+                className="inline-block bg-quantbeige-50 text-quantblack px-7 py-3 rounded-sm hover:bg-quantbeige-100 transition-all duration-300"
+              >
+                Learn More
+              </a>
+            </div>
+            <div className="hidden md:block">
+              <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center">
+                <div className="w-2/3 h-2/3 border-2 border-quantbeige-50/20 rounded-full flex items-center justify-center">
+                  <div className="w-1/2 h-1/2 border-2 border-quantbeige-50/30 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="col-span-1 md:col-span-1">
             <img 
@@ -18,27 +42,12 @@ export default function Footer() {
               The industry leader in tokenomics and market making setup, 
               providing productized service packages for digital assets.
             </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-4">Services</h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Token Issuance
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Liquid Token Improvement
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-quantblack-700 hover:text-quantblack transition-colors">
-                  Quantdesign Incubator
-                </a>
-              </li>
-            </ul>
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="bg-quantbeige-200 px-4 py-2 rounded-sm text-center">
+                <div className="text-xl font-medium">100+</div>
+                <div className="text-quantblack-700 text-sm">Projects Supported</div>
+              </div>
+            </div>
           </div>
 
           <div>

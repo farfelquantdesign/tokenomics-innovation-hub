@@ -29,16 +29,16 @@ export default function Hero() {
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in animation-delay-300">
             <a 
-              href="#services" 
+              href="#about" 
               className="bg-quantblack text-quantbeige-50 px-7 py-3 rounded-sm hover:bg-quantblack-800 transition-all duration-300"
             >
-              Explore Services
+              About Us
             </a>
             <a 
               href="#about" 
               className="border border-quantblack/20 px-7 py-3 rounded-sm hover:bg-quantblack/5 transition-all duration-300"
             >
-              About Us
+              Our Expertise
             </a>
           </div>
         </div>
