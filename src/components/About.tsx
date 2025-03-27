@@ -13,7 +13,7 @@ export default function About() {
           </p>
           <p className="text-lg text-quantblack-700 mt-4">
             Our team combines expertise in statistics, finance, and blockchain technology to design custom 
-            solutions that stand the test of time and market volatility.
+            solutions that stand up to crypto market volatility.
           </p>
         </div>
 
