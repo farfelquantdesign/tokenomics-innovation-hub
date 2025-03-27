@@ -8,11 +8,11 @@ export default function About() {
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">About Quantdesign</h2>
           <p className="text-lg text-quantblack-700">
-            Founded 4 years ago, Quantdesign has established itself as the industry leader in tokenomics and 
-            market making setup. We believe in creating sustainable token economies that deliver real value to all stakeholders.
+            Founded 4 years ago, Quantdesign is the industry leader in tokenomics and active supply management. 
+            We believe in creating digital assets with sustainable long-term value for all stakeholders.
           </p>
           <p className="text-lg text-quantblack-700 mt-4">
-            Our team combines deep expertise in finance, mathematics, and blockchain technology to design tokenomics 
+            Our team combines expertise in statistics, finance, and blockchain technology to design custom 
             solutions that stand the test of time and market volatility.
           </p>
         </div>
