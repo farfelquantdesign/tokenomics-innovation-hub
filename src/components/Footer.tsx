@@ -42,12 +42,6 @@ export default function Footer() {
               The industry leader in tokenomics and market making setup, 
               providing productized service packages for digital assets.
             </p>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="bg-quantbeige-200 px-4 py-2 rounded-sm text-center">
-                <div className="text-xl font-medium">100+</div>
-                <div className="text-quantblack-700 text-sm">Projects Supported</div>
-              </div>
-            </div>
           </div>
 
           <div>

@@ -23,7 +23,7 @@ export default function About() {
             <div className="text-quantblack-600">Years of Leadership</div>
           </div>
           <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
-            <div className="text-3xl font-semibold mb-2">35+</div>
+            <div className="text-3xl font-semibold mb-2">100+</div>
             <div className="text-quantblack-600">Projects Supported</div>
           </div>
           <div className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100">
