@@ -9,7 +9,12 @@ export default function Hero() {
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <div className="mb-8 animate-fade-in" style={{ animationDuration: '1s' }}>
+          <div className="mb-8 opacity-0" 
+            style={{ 
+              animation: 'fade-in 1.5s ease-out forwards',
+              animationDelay: '0.5s'
+            }}
+          >
             <img 
               src="/lovable-uploads/aac68da7-9dd6-49e4-af12-88d51162dbf2.png" 
               alt="Quantdesign Logo" 
@@ -18,10 +23,10 @@ export default function Hero() {
           </div>
           
           <h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight opacity-0 transition-opacity duration-1000"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight opacity-0"
             style={{ 
-              animation: 'fade-in 1s ease-out forwards',
-              animationDelay: '1.2s'
+              animation: 'fade-in 1.5s ease-out forwards',
+              animationDelay: '2.5s'
             }}
           >
             The First Integrated<br className="hidden sm:block" />
@@ -29,11 +34,11 @@ export default function Hero() {
           </h1>
           
           <p 
-            className="text-lg md:text-xl text-quantblack/70 max-w-2xl mx-auto mb-10 opacity-0 transition-opacity duration-1000" 
+            className="text-lg md:text-xl text-quantblack/70 max-w-2xl mx-auto mb-10 opacity-0" 
             data-animate="true"
             style={{ 
-              animation: 'fade-in 1s ease-out forwards',
-              animationDelay: '2.4s'
+              animation: 'fade-in 1.5s ease-out forwards',
+              animationDelay: '4.5s'
             }}
           >
             Quantdesign is a full-stack provider of tailored processes focused on enhancing long term growth and creating sustainable value<br className="hidden sm:block" /> 
