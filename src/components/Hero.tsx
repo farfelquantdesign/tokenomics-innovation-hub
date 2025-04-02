@@ -26,35 +26,12 @@ export default function Hero() {
             Quantdesign is a full-stack provider of tailored processes focused on enhancing long term growth and creating sustainable value<br className="hidden sm:block" /> 
             for new token issuances and existing liquid assets.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in animation-delay-300">
-            <a 
-              href="#about" 
-              className="bg-quantblack text-quantbeige-50 px-7 py-3 rounded-sm hover:bg-quantblack-800 transition-all duration-300"
-            >
-              About Us
-            </a>
-            <a 
-              href="#about" 
-              className="border border-quantblack/20 px-7 py-3 rounded-sm hover:bg-quantblack/5 transition-all duration-300"
-            >
-              Our Expertise
-            </a>
-          </div>
         </div>
       </div>
 
       {/* Decorative elements */}
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-quantbeige-100 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-quantbeige-100 rounded-full blur-3xl opacity-50 translate-x-1/3 translate-y-1/3"></div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
-        <a href="#about" className="flex flex-col items-center text-quantblack/50 hover:text-quantblack transition-colors duration-300">
-          <span className="text-xs mb-2">Scroll Down</span>
-          <ArrowDown className="h-4 w-4" />
-        </a>
-      </div>
     </section>
   );
 }
