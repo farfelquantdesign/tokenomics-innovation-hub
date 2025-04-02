@@ -20,7 +20,6 @@ export default function Hero() {
           <h1 
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight opacity-0 transition-opacity duration-1000"
             style={{ 
-              animationDelay: '1s', 
               animation: 'fade-in 1s ease-out forwards',
               animationDelay: '1.2s'
             }}
