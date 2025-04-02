@@ -34,8 +34,8 @@ export default function About() {
         <div className="max-w-3xl mx-auto mb-16 text-center opacity-0 translate-y-8 transition-all duration-1000" data-animate="true">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">About Quantdesign</h2>
           <p className="text-lg text-quantblack-700">
-            Quantdesign is the industry leader in tokenomics and active supply management. 
-            We believe in creating digital assets with sustainable long-term value for all stakeholders.
+            Quantdesign is a full-stack provider of tailored processes focused on enhancing long term growth and creating sustainable value
+            for new token issuances and existing liquid assets. We believe in creating digital assets with sustainable long-term value for all stakeholders.
           </p>
           <p className="text-lg text-quantblack-700 mt-4">
             Our team combines expertise in statistics, finance, and blockchain technology to design custom 

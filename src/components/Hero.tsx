@@ -32,18 +32,6 @@ export default function Hero() {
             The First Integrated<br className="hidden sm:block" />
             Token Solutions Firm
           </h1>
-          
-          <p 
-            className="text-lg md:text-xl text-quantblack/70 max-w-2xl mx-auto mb-10 opacity-0" 
-            data-animate="true"
-            style={{ 
-              animation: 'fade-in 1.5s ease-out forwards',
-              animationDelay: '4.5s'
-            }}
-          >
-            Quantdesign is a full-stack provider of tailored processes focused on enhancing long term growth and creating sustainable value<br className="hidden sm:block" /> 
-            for new token issuances and existing liquid assets.
-          </p>
         </div>
       </div>
 
