@@ -31,7 +31,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-16 text-center opacity-0 translate-y-8 transition-all duration-700" data-animate="true">
+        <div className="max-w-3xl mx-auto mb-16 text-center opacity-0 translate-y-8 transition-all duration-1000" data-animate="true">
           <h2 className="text-3xl md:text-4xl font-medium mb-6">About Quantdesign</h2>
           <p className="text-lg text-quantblack-700">
             Quantdesign is the industry leader in tokenomics and active supply management. 
@@ -45,28 +45,28 @@ export default function About() {
 
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
           <div 
-            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-700 delay-100" 
+            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-1000 delay-100" 
             data-animate="true"
           >
             <div className="text-3xl font-semibold mb-2">4+</div>
             <div className="text-quantblack-600">Years of Leadership</div>
           </div>
           <div 
-            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-700 delay-200" 
+            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-1000 delay-300" 
             data-animate="true"
           >
             <div className="text-3xl font-semibold mb-2">100+</div>
             <div className="text-quantblack-600">Projects Supported</div>
           </div>
           <div 
-            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-700 delay-300" 
+            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-1000 delay-500" 
             data-animate="true"
           >
             <div className="text-3xl font-semibold mb-2">$7B+</div>
             <div className="text-quantblack-600">Assets Supported</div>
           </div>
           <div 
-            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-700 delay-400" 
+            className="bg-white p-6 rounded-sm shadow-sm border border-quantbeige-100 opacity-0 translate-y-8 transition-all duration-1000 delay-700" 
             data-animate="true"
           >
             <div className="text-3xl font-semibold mb-2">11</div>

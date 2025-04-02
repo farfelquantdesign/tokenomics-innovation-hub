@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    const handleInitialAnimation = () => {
+    const handleScrollAnimation = () => {
       const animatedElements = document.querySelectorAll('[data-animate="true"]');
       
       animatedElements.forEach(element => {
@@ -15,18 +15,21 @@ const Index = () => {
         const windowHeight = window.innerHeight;
         
         if (elementPosition < windowHeight * 0.85) {
-          element.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
-          element.classList.add('opacity-100', 'translate-y-0');
+          if (element.style.animation === '') {
+            element.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
+            element.classList.add('opacity-100', 'translate-y-0');
+          }
         }
       });
     };
 
-    // Short delay to ensure elements are properly rendered
-    const timer = setTimeout(() => {
-      handleInitialAnimation();
-    }, 300);
+    // Initial check and scroll listener
+    handleScrollAnimation();
+    window.addEventListener('scroll', handleScrollAnimation);
     
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener('scroll', handleScrollAnimation);
+    };
   }, []);
 
   return (
