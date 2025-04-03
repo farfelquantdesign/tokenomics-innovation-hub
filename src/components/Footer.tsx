@@ -1,8 +1,30 @@
 
-import { ArrowUp, TrendingUp, Coins, DollarSign } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const chartRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    // Animate the price chart path when component mounts
+    if (chartRef.current) {
+      const path = chartRef.current.querySelector('path');
+      if (path) {
+        const length = path.getTotalLength();
+        
+        // Set up initial state - the path is invisible
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${length}`;
+        
+        // Trigger animation
+        setTimeout(() => {
+          path.style.transition = 'stroke-dashoffset 2s ease-in-out';
+          path.style.strokeDashoffset = '0';
+        }, 300);
+      }
+    }
+  }, []);
 
   return (
     <footer className="bg-quantbeige py-12">
@@ -17,26 +39,53 @@ export default function Footer() {
             </div>
             <div className="hidden md:block">
               <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center relative">
-                {/* Financial animation with chart and coins */}
-                <div className="w-2/3 h-2/3 flex items-center justify-center relative">
-                  {/* Trending chart line */}
-                  <TrendingUp 
-                    className="absolute text-quantbeige-50/70 w-12 h-12 animate-float" 
-                    strokeWidth={1.5}
-                  />
-                  {/* Dollar sign with pulse animation */}
-                  <DollarSign 
-                    className="absolute text-quantbeige-50 w-10 h-10 animate-pulse-slow" 
-                    strokeWidth={2}
-                  />
-                  {/* Coins with slight animation */}
-                  <Coins 
-                    className="absolute text-quantbeige-50/80 w-8 h-8 -translate-x-8 translate-y-4 animate-float" 
-                    strokeWidth={1.5} 
-                    style={{ animationDelay: '0.5s' }}
-                  />
+                {/* Financial chart animation */}
+                <div className="w-3/4 h-3/4 flex items-center justify-center relative">
+                  {/* Price chart */}
+                  <svg 
+                    ref={chartRef}
+                    className="w-full h-full" 
+                    viewBox="0 0 100 50" 
+                    preserveAspectRatio="none"
+                  >
+                    {/* Chart grid lines */}
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                    <line x1="0" y1="37.5" x2="100" y2="37.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                    <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                    <line x1="0" y1="12.5" x2="100" y2="12.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                    
+                    {/* Price path - gradually up with minor dips */}
+                    <path
+                      d="M0,40 
+                         L10,35 
+                         L20,32 
+                         L30,35 
+                         L40,30 
+                         L50,25 
+                         L60,27 
+                         L70,22 
+                         L80,18 
+                         L90,20 
+                         L100,15"
+                      fill="none"
+                      stroke="rgba(245, 242, 234, 0.8)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      className="price-line"
+                    />
+                    
+                    {/* Moving dot at the end of the line */}
+                    <circle
+                      cx="100"
+                      cy="15"
+                      r="1.5"
+                      fill="#f5f2ea"
+                      className="animate-pulse-slow"
+                    />
+                  </svg>
+                  
                   {/* Circle border */}
-                  <div className="w-full h-full border-2 border-quantbeige-50/20 rounded-full"></div>
+                  <div className="absolute w-full h-full border-2 border-quantbeige-50/20 rounded-full"></div>
                 </div>
               </div>
             </div>
