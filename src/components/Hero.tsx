@@ -9,7 +9,8 @@ export default function Hero() {
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <div className="mb-8 opacity-0" 
+          <div 
+            className="mb-8 opacity-0" 
             style={{ 
               animation: 'fade-in 1.5s ease-out forwards',
               animationDelay: '0.5s'

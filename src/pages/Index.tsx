@@ -15,9 +15,11 @@ const Index = () => {
         const windowHeight = window.innerHeight;
         
         if (elementPosition < windowHeight * 0.85) {
-          if (element instanceof HTMLElement && element.style.animation === '') {
-            element.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
-            element.classList.add('opacity-100', 'translate-y-0');
+          if (element instanceof HTMLElement) {
+            if (!element.style.animation) {
+              element.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
+              element.classList.add('opacity-100', 'translate-y-0');
+            }
           }
         }
       });
