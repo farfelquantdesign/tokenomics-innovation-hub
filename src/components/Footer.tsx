@@ -1,5 +1,5 @@
 
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, TrendingUp, Coins, DollarSign } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,9 +16,27 @@ export default function Footer() {
               </p>
             </div>
             <div className="hidden md:block">
-              <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center">
-                <div className="w-2/3 h-2/3 border-2 border-quantbeige-50/20 rounded-full flex items-center justify-center">
-                  <div className="w-1/2 h-1/2 border-2 border-quantbeige-50/30 rounded-full"></div>
+              <div className="aspect-square bg-gradient-to-br from-quantblack-800 to-quantblack-900 rounded-full flex items-center justify-center relative">
+                {/* Financial animation with chart and coins */}
+                <div className="w-2/3 h-2/3 flex items-center justify-center relative">
+                  {/* Trending chart line */}
+                  <TrendingUp 
+                    className="absolute text-quantbeige-50/70 w-12 h-12 animate-float" 
+                    strokeWidth={1.5}
+                  />
+                  {/* Dollar sign with pulse animation */}
+                  <DollarSign 
+                    className="absolute text-quantbeige-50 w-10 h-10 animate-pulse-slow" 
+                    strokeWidth={2}
+                  />
+                  {/* Coins with slight animation */}
+                  <Coins 
+                    className="absolute text-quantbeige-50/80 w-8 h-8 -translate-x-8 translate-y-4 animate-float" 
+                    strokeWidth={1.5} 
+                    style={{ animationDelay: '0.5s' }}
+                  />
+                  {/* Circle border */}
+                  <div className="w-full h-full border-2 border-quantbeige-50/20 rounded-full"></div>
                 </div>
               </div>
             </div>

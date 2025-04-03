@@ -27,7 +27,7 @@ export default function Hero() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium mb-6 tracking-tight opacity-0"
             style={{ 
               animation: 'fade-in 1.5s ease-out forwards',
-              animationDelay: '2.5s'
+              animationDelay: '1.75s'
             }}
           >
             The First Integrated<br className="hidden sm:block" />
