@@ -83,19 +83,29 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Price path - gradually up with minor dips */}
+                  {/* More realistic price path with random variations and general upward trend */}
                   <path
-                    d="M0,40 
-                       L10,35 
-                       L20,32 
+                    d="M0,42 
+                       L5,39 
+                       L10,41 
+                       L15,38 
+                       L20,40 
+                       L25,37 
                        L30,35 
-                       L40,30 
-                       L50,25 
-                       L60,27 
-                       L70,22 
-                       L80,18 
-                       L90,20 
-                       L100,15"
+                       L35,38 
+                       L40,34 
+                       L45,36 
+                       L50,32 
+                       L55,34 
+                       L60,30 
+                       L65,28 
+                       L70,31 
+                       L75,26 
+                       L80,23 
+                       L85,25 
+                       L90,22 
+                       L95,19 
+                       L100,17"
                     fill="none"
                     stroke="rgba(245, 242, 234, 0.8)"
                     strokeWidth="1.5"
@@ -106,7 +116,7 @@ export default function Footer() {
                   {/* Moving dot at the end of the line */}
                   <circle
                     cx="100"
-                    cy="15"
+                    cy="17"
                     r="1.5"
                     fill="#f5f2ea"
                     className="animate-pulse-slow"
