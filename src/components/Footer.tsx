@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -62,10 +61,8 @@ export default function Footer() {
         // Create and add the path element
         const chartLine = chartRef.current?.querySelector('.chart-line');
         if (chartLine) {
-          chartLine.setAttribute('d', pathData);
-          
-          // Calculate the total length of the path
-          const pathLength = chartLine.getTotalLength();
+          // Fix: Type assertion to SVGPathElement to access getTotalLength method
+          const pathLength = (chartLine as SVGPathElement).getTotalLength();
           
           // Set up the moving dot animation
           const dotElement = chartRef.current?.querySelector('.moving-dot');
@@ -83,10 +80,10 @@ export default function Footer() {
             `;
             
             // Add the keyframes to the document
-            const styleSheet = document.createElement("style");
-            styleSheet.type = "text/css";
-            styleSheet.innerText = keyframes;
-            document.head.appendChild(styleSheet);
+            const styleElement = document.createElement("style");
+            styleElement.type = "text/css";
+            styleElement.innerText = keyframes;
+            document.head.appendChild(styleElement);
             
             // Set up the dot to follow the path
             dotElement.setAttribute('offset-path', `path("${pathData}")`);
@@ -94,8 +91,12 @@ export default function Footer() {
           }
         }
         
+        // Fix: Declare styleElement in scope and return a cleanup function
+        const addedStyleElement = document.querySelector('style:last-child');
         return () => {
-          document.head.removeChild(styleSheet);
+          if (addedStyleElement) {
+            document.head.removeChild(addedStyleElement);
+          }
         };
       };
       
