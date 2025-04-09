@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,10 +34,10 @@ export default function Footer() {
       // Generate a general uptrend with fluctuations for the chart path
       const generatePath = () => {
         const points = [];
-        const numPoints = 50;
+        const numPoints = 100; // Increased number of points for longer path
         let value = 35; // Starting value
-        const volatility = 3; // Max change per step
-        const upwardBias = 0.2; // Bias toward upward movement
+        const volatility = 2.5; // Max change per step
+        const upwardBias = 0.15; // Bias toward upward movement
         
         for (let i = 0; i < numPoints; i++) {
           // Generate a biased random change (more likely to go up)
@@ -78,13 +77,12 @@ export default function Footer() {
         
         .moving-dot {
           offset-path: path("${pathData}");
-          animation: move-dot 4s linear infinite;
+          animation: move-dot 2s linear infinite; /* Faster animation (2s instead of 4s) */
           offset-rotate: 0deg;
         }
       `;
       document.head.appendChild(dotStyle);
 
-      // Return cleanup function
       return () => {
         document.head.removeChild(dotStyle);
       };
