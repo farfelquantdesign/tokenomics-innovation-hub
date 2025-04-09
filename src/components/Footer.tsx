@@ -32,84 +32,61 @@ export default function Footer() {
   // Set up the dynamic chart animation
   useEffect(() => {
     if (isVisible && chartRef.current) {
-      // Animation setup
-      const animateChart = () => {
-        // Generate a general uptrend with fluctuations
-        const generatePath = () => {
-          const points = [];
-          const numPoints = 50;
-          let value = 35; // Starting value
-          const volatility = 3; // Max change per step
-          const upwardBias = 0.2; // Bias toward upward movement
-          
-          for (let i = 0; i < numPoints; i++) {
-            // Generate a biased random change (more likely to go up)
-            const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
-            
-            // Ensure value stays within reasonable bounds
-            value = Math.max(10, Math.min(value + randomChange, 40));
-            
-            // Calculate x position based on index
-            const x = i * (100 / (numPoints - 1));
-            
-            points.push([x, value]);
-          }
-          
-          // Create SVG path string from points
-          return points.map((point, i) => 
-            `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
-          ).join(' ');
-        };
+      // Generate a general uptrend with fluctuations for the chart path
+      const generatePath = () => {
+        const points = [];
+        const numPoints = 50;
+        let value = 35; // Starting value
+        const volatility = 3; // Max change per step
+        const upwardBias = 0.2; // Bias toward upward movement
         
-        // Create the path data
-        const pathData = generatePath();
-        
-        // Get the chart line and update it
-        const chartLine = chartRef.current?.querySelector('.chart-line');
-        if (chartLine) {
-          (chartLine as SVGPathElement).setAttribute('d', pathData);
+        for (let i = 0; i < numPoints; i++) {
+          // Generate a biased random change (more likely to go up)
+          const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
           
-          // Set up the moving dot animation
-          const dotElement = chartRef.current?.querySelector('.moving-dot');
-          if (dotElement) {
-            // Create keyframes for dot movement
-            const keyframes = `
-              @keyframes dot-movement {
-                0% {
-                  offset-distance: 0%;
-                }
-                100% {
-                  offset-distance: 100%;
-                }
-              }
-            `;
-            
-            // Add style element with keyframes
-            const styleElement = document.createElement("style");
-            styleElement.type = "text/css";
-            styleElement.innerText = keyframes;
-            document.head.appendChild(styleElement);
-            
-            // Configure the dot to follow the path
-            (dotElement as SVGElement).setAttribute('offset-path', `path("${pathData}")`);
-            (dotElement as SVGElement).setAttribute('style', 'animation: dot-movement 4s linear infinite; offset-rotate: 0deg;');
-            
-            // Store the style element for cleanup
-            return styleElement;
-          }
+          // Ensure value stays within reasonable bounds
+          value = Math.max(10, Math.min(value + randomChange, 40));
+          
+          // Calculate x position based on index
+          const x = i * (100 / (numPoints - 1));
+          
+          points.push([x, value]);
         }
         
-        return null;
+        // Create SVG path string from points
+        return points.map((point, i) => 
+          `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
+        ).join(' ');
       };
+
+      // Create the path data
+      const pathData = generatePath();
       
-      // Set up and start the animation
-      const styleElement = animateChart();
-      
+      // Get the chart line and update it
+      const chartLine = chartRef.current.querySelector('.chart-line');
+      if (chartLine) {
+        (chartLine as SVGPathElement).setAttribute('d', pathData);
+      }
+
+      // Create and inject CSS animation for the dot
+      const dotStyle = document.createElement('style');
+      dotStyle.textContent = `
+        @keyframes move-dot {
+          0% { offset-distance: 0%; }
+          100% { offset-distance: 100%; }
+        }
+        
+        .moving-dot {
+          offset-path: path("${pathData}");
+          animation: move-dot 4s linear infinite;
+          offset-rotate: 0deg;
+        }
+      `;
+      document.head.appendChild(dotStyle);
+
       // Return cleanup function
       return () => {
-        if (styleElement) {
-          document.head.removeChild(styleElement);
-        }
+        document.head.removeChild(dotStyle);
       };
     }
   }, [isVisible]);
