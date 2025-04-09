@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -31,43 +32,47 @@ export default function Footer() {
   // Set up the dynamic chart animation
   useEffect(() => {
     if (isVisible && chartRef.current) {
-      // Create dynamic point movement animation
-      const createDynamicAnimation = () => {
-        // Generate a more random, realistic financial chart path with general uptrend
-        const points = [];
-        const numPoints = 50;
-        let value = 35; // Starting value
-        const volatility = 3; // Max change per step
-        const upwardBias = 0.2; // Bias toward upward movement
-        
-        for (let i = 0; i < numPoints; i++) {
-          // Generate a biased random change (more likely to go up)
-          const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
+      // Animation setup
+      const animateChart = () => {
+        // Generate a general uptrend with fluctuations
+        const generatePath = () => {
+          const points = [];
+          const numPoints = 50;
+          let value = 35; // Starting value
+          const volatility = 3; // Max change per step
+          const upwardBias = 0.2; // Bias toward upward movement
           
-          // Ensure value stays within reasonable bounds
-          value = Math.max(10, Math.min(value + randomChange, 40));
+          for (let i = 0; i < numPoints; i++) {
+            // Generate a biased random change (more likely to go up)
+            const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
+            
+            // Ensure value stays within reasonable bounds
+            value = Math.max(10, Math.min(value + randomChange, 40));
+            
+            // Calculate x position based on index
+            const x = i * (100 / (numPoints - 1));
+            
+            points.push([x, value]);
+          }
           
-          // Calculate x position based on index
-          const x = i * (100 / (numPoints - 1));
-          
-          points.push([x, value]);
-        }
+          // Create SVG path string from points
+          return points.map((point, i) => 
+            `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
+          ).join(' ');
+        };
         
-        // Create SVG path string from points
-        const pathData = points.map((point, i) => 
-          `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
-        ).join(' ');
+        // Create the path data
+        const pathData = generatePath();
         
-        // Create and add the path element
+        // Get the chart line and update it
         const chartLine = chartRef.current?.querySelector('.chart-line');
         if (chartLine) {
-          // Fix: Type assertion to SVGPathElement to access getTotalLength method
-          const pathLength = (chartLine as SVGPathElement).getTotalLength();
+          (chartLine as SVGPathElement).setAttribute('d', pathData);
           
           // Set up the moving dot animation
           const dotElement = chartRef.current?.querySelector('.moving-dot');
           if (dotElement) {
-            // Create keyframes for continuous dot movement
+            // Create keyframes for dot movement
             const keyframes = `
               @keyframes dot-movement {
                 0% {
@@ -79,31 +84,32 @@ export default function Footer() {
               }
             `;
             
-            // Add the keyframes to the document
+            // Add style element with keyframes
             const styleElement = document.createElement("style");
             styleElement.type = "text/css";
             styleElement.innerText = keyframes;
             document.head.appendChild(styleElement);
             
-            // Set up the dot to follow the path
-            dotElement.setAttribute('offset-path', `path("${pathData}")`);
-            dotElement.setAttribute('style', 'animation: dot-movement 8s linear infinite; offset-rotate: 0deg;');
+            // Configure the dot to follow the path
+            (dotElement as SVGElement).setAttribute('offset-path', `path("${pathData}")`);
+            (dotElement as SVGElement).setAttribute('style', 'animation: dot-movement 4s linear infinite; offset-rotate: 0deg;');
+            
+            // Store the style element for cleanup
+            return styleElement;
           }
         }
         
-        // Fix: Declare styleElement in scope and return a cleanup function
-        const addedStyleElement = document.querySelector('style:last-child');
-        return () => {
-          if (addedStyleElement) {
-            document.head.removeChild(addedStyleElement);
-          }
-        };
+        return null;
       };
       
-      const cleanup = createDynamicAnimation();
+      // Set up and start the animation
+      const styleElement = animateChart();
       
+      // Return cleanup function
       return () => {
-        if (cleanup) cleanup();
+        if (styleElement) {
+          document.head.removeChild(styleElement);
+        }
       };
     }
   }, [isVisible]);
@@ -149,6 +155,7 @@ export default function Footer() {
                     stroke="rgba(245, 242, 234, 0.8)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
+                    d="M0,35 L2,34 L4,36 L6,33 L8,35 L10,32 L12,34 L14,31 L16,33 L18,30 L20,32 L22,29 L24,31 L26,28 L28,30 L30,27 L32,29 L34,26 L36,28 L38,25 L40,27 L42,24 L44,26 L46,23 L48,25 L50,22 L52,24 L54,21 L56,23 L58,20 L60,22 L62,19 L64,21 L66,18 L68,20 L70,17 L72,19 L74,16 L76,18 L78,15 L80,17 L82,14 L84,16 L86,13 L88,15 L90,12 L92,14 L94,11 L96,13 L98,10 L100,12"
                   />
                   
                   {/* Moving dot that follows the path */}
