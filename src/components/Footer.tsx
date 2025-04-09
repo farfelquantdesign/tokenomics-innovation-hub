@@ -29,22 +29,44 @@ export default function Footer() {
     };
   }, []);
 
+  // Set up the continuous animation for the chart
   useEffect(() => {
     if (isVisible && chartRef.current) {
-      const path = chartRef.current.querySelector('path');
-      if (path) {
-        const length = path.getTotalLength();
+      // Create keyframes for continuous price movement
+      const createKeyframes = () => {
+        const keyframes = `
+          @keyframes price-movement {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+        `;
         
-        // Set up initial state - the path is invisible
-        path.style.strokeDasharray = `${length}`;
-        path.style.strokeDashoffset = `${length}`;
+        // Add the keyframes to the document
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = keyframes;
+        document.head.appendChild(styleSheet);
         
-        // Trigger animation
-        setTimeout(() => {
-          path.style.transition = 'stroke-dashoffset 2s ease-in-out';
-          path.style.strokeDashoffset = '0';
-        }, 300);
+        return () => {
+          document.head.removeChild(styleSheet);
+        };
+      };
+      
+      const cleanupKeyframes = createKeyframes();
+      
+      // Apply animation to the chart element
+      const chartLine = chartRef.current.querySelector('.price-line-container');
+      if (chartLine) {
+        chartLine.classList.add('animate-price');
       }
+      
+      return () => {
+        cleanupKeyframes();
+      };
     }
   }, [isVisible]);
 
@@ -59,17 +81,17 @@ export default function Footer() {
                 Quantdesign is a referral only business. Reach out and get in touch.
               </p>
             </div>
-            <div className="hidden md:block bg-quantblack-800 p-6">
-              {/* Financial chart animation - more professional design */}
-              <div className="w-full h-48">
-                {/* Price chart */}
+            <div className="hidden md:block bg-quantblack-800 p-6 overflow-hidden">
+              {/* Financial chart with continuous animation */}
+              <div className="w-full h-48 relative">
+                {/* Chart grid lines */}
                 <svg 
                   ref={chartRef}
                   className="w-full h-full" 
                   viewBox="0 0 100 50" 
                   preserveAspectRatio="none"
                 >
-                  {/* Chart grid lines - more subtle and professional */}
+                  {/* Chart grid lines - background */}
                   <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="0" y1="37.5" x2="100" y2="37.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
@@ -83,44 +105,80 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* More realistic price path with random variations and general upward trend */}
-                  <path
-                    d="M0,42 
-                       L5,39 
-                       L10,41 
-                       L15,38 
-                       L20,40 
-                       L25,37 
-                       L30,35 
-                       L35,38 
-                       L40,34 
-                       L45,36 
-                       L50,32 
-                       L55,34 
-                       L60,30 
-                       L65,28 
-                       L70,31 
-                       L75,26 
-                       L80,23 
-                       L85,25 
-                       L90,22 
-                       L95,19 
-                       L100,17"
-                    fill="none"
-                    stroke="rgba(245, 242, 234, 0.8)"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    className="price-line"
-                  />
-                  
-                  {/* Moving dot at the end of the line */}
-                  <circle
-                    cx="100"
-                    cy="17"
-                    r="1.5"
-                    fill="#f5f2ea"
-                    className="animate-pulse-slow"
-                  />
+                  {/* Animated price line container - this will hold the repeating pattern */}
+                  <g className="price-line-container" style={{ 
+                    animation: isVisible ? 'price-movement 20s linear infinite' : 'none',
+                    transformOrigin: 'left center'
+                  }}>
+                    {/* First segment of the chart - will be repeated */}
+                    <path
+                      d="M0,35 
+                         L5,32 
+                         L10,34 
+                         L15,31 
+                         L20,33 
+                         L25,30 
+                         L30,28 
+                         L35,31 
+                         L40,27 
+                         L45,29 
+                         L50,25 
+                         L55,27 
+                         L60,23 
+                         L65,21 
+                         L70,24 
+                         L75,19 
+                         L80,16 
+                         L85,18 
+                         L90,15 
+                         L95,12 
+                         L100,10"
+                      fill="none"
+                      stroke="rgba(245, 242, 234, 0.8)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      className="price-line"
+                    />
+                    
+                    {/* Duplicate of the first segment, positioned to create seamless loop */}
+                    <path
+                      d="M100,35 
+                         L105,32 
+                         L110,34 
+                         L115,31 
+                         L120,33 
+                         L125,30 
+                         L130,28 
+                         L135,31 
+                         L140,27 
+                         L145,29 
+                         L150,25 
+                         L155,27 
+                         L160,23 
+                         L165,21 
+                         L170,24 
+                         L175,19 
+                         L180,16 
+                         L185,18 
+                         L190,15 
+                         L195,12 
+                         L200,10"
+                      fill="none"
+                      stroke="rgba(245, 242, 234, 0.8)"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      className="price-line"
+                    />
+                    
+                    {/* Pulsing dot that follows the end of visible line */}
+                    <circle
+                      cx="100"
+                      cy="10"
+                      r="1.5"
+                      fill="#f5f2ea"
+                      className="animate-pulse-slow"
+                    />
+                  </g>
                 </svg>
               </div>
             </div>
