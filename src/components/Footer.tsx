@@ -29,43 +29,80 @@ export default function Footer() {
     };
   }, []);
 
-  // Set up the continuous animation for the chart
+  // Set up the dynamic chart animation
   useEffect(() => {
     if (isVisible && chartRef.current) {
-      // Create keyframes for continuous price movement
-      const createKeyframes = () => {
-        const keyframes = `
-          @keyframes price-movement {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `;
+      // Create dynamic point movement animation
+      const createDynamicAnimation = () => {
+        // Generate a more random, realistic financial chart path with general uptrend
+        const points = [];
+        const numPoints = 50;
+        let value = 35; // Starting value
+        const volatility = 3; // Max change per step
+        const upwardBias = 0.2; // Bias toward upward movement
         
-        // Add the keyframes to the document
-        const styleSheet = document.createElement("style");
-        styleSheet.type = "text/css";
-        styleSheet.innerText = keyframes;
-        document.head.appendChild(styleSheet);
+        for (let i = 0; i < numPoints; i++) {
+          // Generate a biased random change (more likely to go up)
+          const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
+          
+          // Ensure value stays within reasonable bounds
+          value = Math.max(10, Math.min(value + randomChange, 40));
+          
+          // Calculate x position based on index
+          const x = i * (100 / (numPoints - 1));
+          
+          points.push([x, value]);
+        }
+        
+        // Create SVG path string from points
+        const pathData = points.map((point, i) => 
+          `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
+        ).join(' ');
+        
+        // Create and add the path element
+        const chartLine = chartRef.current?.querySelector('.chart-line');
+        if (chartLine) {
+          chartLine.setAttribute('d', pathData);
+          
+          // Calculate the total length of the path
+          const pathLength = chartLine.getTotalLength();
+          
+          // Set up the moving dot animation
+          const dotElement = chartRef.current?.querySelector('.moving-dot');
+          if (dotElement) {
+            // Create keyframes for continuous dot movement
+            const keyframes = `
+              @keyframes dot-movement {
+                0% {
+                  offset-distance: 0%;
+                }
+                100% {
+                  offset-distance: 100%;
+                }
+              }
+            `;
+            
+            // Add the keyframes to the document
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = keyframes;
+            document.head.appendChild(styleSheet);
+            
+            // Set up the dot to follow the path
+            dotElement.setAttribute('offset-path', `path("${pathData}")`);
+            dotElement.setAttribute('style', 'animation: dot-movement 8s linear infinite; offset-rotate: 0deg;');
+          }
+        }
         
         return () => {
           document.head.removeChild(styleSheet);
         };
       };
       
-      const cleanupKeyframes = createKeyframes();
-      
-      // Apply animation to the chart element
-      const chartLine = chartRef.current.querySelector('.price-line-container');
-      if (chartLine) {
-        chartLine.classList.add('animate-price');
-      }
+      const cleanup = createDynamicAnimation();
       
       return () => {
-        cleanupKeyframes();
+        if (cleanup) cleanup();
       };
     }
   }, [isVisible]);
@@ -82,9 +119,8 @@ export default function Footer() {
               </p>
             </div>
             <div className="hidden md:block bg-quantblack-800 p-6 overflow-hidden">
-              {/* Financial chart with continuous animation */}
+              {/* Financial chart with dynamic animation */}
               <div className="w-full h-48 relative">
-                {/* Chart grid lines */}
                 <svg 
                   ref={chartRef}
                   className="w-full h-full" 
@@ -105,80 +141,24 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Animated price line container - this will hold the repeating pattern */}
-                  <g className="price-line-container" style={{ 
-                    animation: isVisible ? 'price-movement 20s linear infinite' : 'none',
-                    transformOrigin: 'left center'
-                  }}>
-                    {/* First segment of the chart - will be repeated */}
-                    <path
-                      d="M0,35 
-                         L5,32 
-                         L10,34 
-                         L15,31 
-                         L20,33 
-                         L25,30 
-                         L30,28 
-                         L35,31 
-                         L40,27 
-                         L45,29 
-                         L50,25 
-                         L55,27 
-                         L60,23 
-                         L65,21 
-                         L70,24 
-                         L75,19 
-                         L80,16 
-                         L85,18 
-                         L90,15 
-                         L95,12 
-                         L100,10"
-                      fill="none"
-                      stroke="rgba(245, 242, 234, 0.8)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      className="price-line"
-                    />
-                    
-                    {/* Duplicate of the first segment, positioned to create seamless loop */}
-                    <path
-                      d="M100,35 
-                         L105,32 
-                         L110,34 
-                         L115,31 
-                         L120,33 
-                         L125,30 
-                         L130,28 
-                         L135,31 
-                         L140,27 
-                         L145,29 
-                         L150,25 
-                         L155,27 
-                         L160,23 
-                         L165,21 
-                         L170,24 
-                         L175,19 
-                         L180,16 
-                         L185,18 
-                         L190,15 
-                         L195,12 
-                         L200,10"
-                      fill="none"
-                      stroke="rgba(245, 242, 234, 0.8)"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      className="price-line"
-                    />
-                    
-                    {/* Pulsing dot that follows the end of visible line */}
-                    <circle
-                      cx="100"
-                      cy="10"
-                      r="1.5"
-                      fill="#f5f2ea"
-                      className="animate-pulse-slow"
-                    />
-                  </g>
+                  {/* Main chart line - will be populated by JavaScript */}
+                  <path
+                    className="chart-line"
+                    fill="none"
+                    stroke="rgba(245, 242, 234, 0.8)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  
+                  {/* Moving dot that follows the path */}
+                  <circle
+                    className="moving-dot"
+                    r="2"
+                    fill="#f5f2ea"
+                    style={{
+                      filter: "drop-shadow(0 0 3px rgba(245, 242, 234, 0.8))"
+                    }}
+                  />
                 </svg>
               </div>
             </div>

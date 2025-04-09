@@ -84,6 +84,18 @@
   .transition-bezier {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
+  
+  /* Added support for motion-path animations */
+  .moving-dot {
+    offset-rotate: 0deg;
+  }
+}
+
+/* Support for older browsers */
+@supports not (offset-path: path('')) {
+  .moving-dot {
+    display: none;
+  }
 }
 
 /* Add explicit keyframes for fade-in animation */
