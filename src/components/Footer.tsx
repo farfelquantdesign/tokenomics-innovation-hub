@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -77,11 +78,25 @@ export default function Footer() {
         
         .moving-dot {
           offset-path: path("${pathData}");
-          animation: move-dot 2s linear infinite; /* Faster animation (2s instead of 4s) */
+          animation: move-dot 2s linear infinite; /* Fast animation (2s) */
           offset-rotate: 0deg;
         }
       `;
       document.head.appendChild(dotStyle);
+
+      // Force a repaint to ensure animation starts
+      const movingDot = chartRef.current.querySelector('.moving-dot');
+      if (movingDot) {
+        // This forces a repaint by accessing offsetHeight
+        // eslint-disable-next-line no-unused-expressions
+        (movingDot as SVGCircleElement).getBoundingClientRect();
+        
+        // Re-apply the animation class to ensure it starts
+        (movingDot as SVGCircleElement).classList.remove('moving-dot');
+        setTimeout(() => {
+          (movingDot as SVGCircleElement).classList.add('moving-dot');
+        }, 10);
+      }
 
       return () => {
         document.head.removeChild(dotStyle);
