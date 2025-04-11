@@ -15,7 +15,7 @@ export default function Footer() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the footer is visible
+      { threshold: 0.1 } // Lower threshold to trigger earlier
     );
 
     if (footerRef.current) {
@@ -35,7 +35,7 @@ export default function Footer() {
       // Generate a general uptrend with fluctuations for the chart path
       const generatePath = () => {
         const points = [];
-        const numPoints = 100; // Increased number of points for longer path
+        const numPoints = 100; // Good number of points for longer path
         let value = 35; // Starting value
         const volatility = 2.5; // Max change per step
         const upwardBias = 0.15; // Bias toward upward movement
@@ -69,7 +69,13 @@ export default function Footer() {
       }
 
       // Create and inject CSS animation for the dot
+      const dotAnimation = document.getElementById('dot-animation-style');
+      if (dotAnimation) {
+        document.head.removeChild(dotAnimation);
+      }
+
       const dotStyle = document.createElement('style');
+      dotStyle.id = 'dot-animation-style';
       dotStyle.textContent = `
         @keyframes move-dot {
           0% { offset-distance: 0%; }
@@ -78,28 +84,30 @@ export default function Footer() {
         
         .moving-dot {
           offset-path: path("${pathData}");
-          animation: move-dot 2s linear infinite; /* Fast animation (2s) */
+          animation: move-dot 2s linear infinite;
           offset-rotate: 0deg;
         }
       `;
       document.head.appendChild(dotStyle);
 
-      // Force a repaint to ensure animation starts
+      // Apply animation directly to the dot element
       const movingDot = chartRef.current.querySelector('.moving-dot');
       if (movingDot) {
-        // This forces a repaint by accessing offsetHeight
-        // eslint-disable-next-line no-unused-expressions
-        (movingDot as SVGCircleElement).getBoundingClientRect();
-        
-        // Re-apply the animation class to ensure it starts
+        // Remove any existing class
         (movingDot as SVGCircleElement).classList.remove('moving-dot');
-        setTimeout(() => {
-          (movingDot as SVGCircleElement).classList.add('moving-dot');
-        }, 10);
+        
+        // Force a repaint/reflow
+        void (movingDot as SVGCircleElement).offsetWidth;
+        
+        // Add the class back
+        (movingDot as SVGCircleElement).classList.add('moving-dot');
       }
 
       return () => {
-        document.head.removeChild(dotStyle);
+        const styleElement = document.getElementById('dot-animation-style');
+        if (styleElement) {
+          document.head.removeChild(styleElement);
+        }
       };
     }
   }, [isVisible]);
@@ -145,7 +153,7 @@ export default function Footer() {
                     stroke="rgba(245, 242, 234, 0.8)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                    d="M0,35 L2,34 L4,36 L6,33 L8,35 L10,32 L12,34 L14,31 L16,33 L18,30 L20,32 L22,29 L24,31 L26,28 L28,30 L30,27 L32,29 L34,26 L36,28 L38,25 L40,27 L42,24 L44,26 L46,23 L48,25 L50,22 L52,24 L54,21 L56,23 L58,20 L60,22 L62,19 L64,21 L66,18 L68,20 L70,17 L72,19 L74,16 L76,18 L78,15 L80,17 L82,14 L84,16 L86,13 L88,15 L90,12 L92,14 L94,11 L96,13 L98,10 L100,12"
+                    d="M0,35 L100,12"
                   />
                   
                   {/* Moving dot that follows the path */}
