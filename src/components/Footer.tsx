@@ -96,8 +96,9 @@ export default function Footer() {
         // Remove any existing class
         (movingDot as SVGCircleElement).classList.remove('moving-dot');
         
-        // Force a repaint/reflow
-        void (movingDot as SVGCircleElement).offsetWidth;
+        // Force a repaint using getBoundingClientRect() instead of offsetWidth
+        // This works for SVG elements
+        void (movingDot as SVGCircleElement).getBoundingClientRect();
         
         // Add the class back
         (movingDot as SVGCircleElement).classList.add('moving-dot');
