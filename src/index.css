@@ -94,6 +94,7 @@
   .animated-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
+    animation: draw-line 8s linear infinite; /* Match this with the JavaScript timing */
   }
 }
 
@@ -110,6 +111,12 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Adding line drawing animation */
+@keyframes draw-line {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
 /* Adding fallback animation for browsers that don't support offset-path */
 @supports not (offset-path: path('')) {
   @keyframes dot-fallback {
@@ -122,6 +129,6 @@
   
   .moving-dot {
     display: block !important;
-    animation: dot-fallback 2s linear infinite !important;
+    animation: dot-fallback 8s linear infinite !important; /* Slowed down to 8s */
   }
 }

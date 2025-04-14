@@ -74,7 +74,7 @@ export default function Footer() {
         document.head.removeChild(existingStyle);
       }
 
-      // Define animation styles with slower timing (8s)
+      // Define animation styles with 8s timing for a slower animation
       dotStyle.textContent = `
         @keyframes move-dot {
           0% { offset-distance: 0%; }
@@ -95,12 +95,12 @@ export default function Footer() {
         .animated-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 8s linear forwards infinite;
+          animation: draw-line 8s linear infinite;
         }
       `;
       document.head.appendChild(dotStyle);
 
-      // Apply animations to both elements
+      // Apply animations to both elements and force repaint
       const movingDot = chartRef.current.querySelector('.moving-dot');
       if (movingDot) {
         (movingDot as SVGCircleElement).classList.remove('moving-dot');
@@ -157,7 +157,7 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Main chart line - will be populated by JavaScript */}
+                  {/* Main chart line - will be animated */}
                   <path
                     className="chart-line animated-line"
                     fill="none"
