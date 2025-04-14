@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -29,7 +28,6 @@ export default function Footer() {
     };
   }, []);
 
-  // Set up the dynamic chart animation
   useEffect(() => {
     if (isVisible && chartRef.current) {
       // Generate a general uptrend with fluctuations for the chart path
@@ -59,48 +57,50 @@ export default function Footer() {
         ).join(' ');
       };
 
-      // Create the path data
       const pathData = generatePath();
       
-      // Get the chart line and update it
       const chartLine = chartRef.current.querySelector('.chart-line');
       if (chartLine) {
         (chartLine as SVGPathElement).setAttribute('d', pathData);
-      }
-
-      // Create and inject CSS animation for the dot
-      const dotAnimation = document.getElementById('dot-animation-style');
-      if (dotAnimation) {
-        document.head.removeChild(dotAnimation);
+        // Add the animation class to the line
+        (chartLine as SVGPathElement).classList.add('animated-line');
       }
 
       const dotStyle = document.createElement('style');
       dotStyle.id = 'dot-animation-style';
+      const existingStyle = document.getElementById('dot-animation-style');
+      if (existingStyle) {
+        document.head.removeChild(existingStyle);
+      }
+
       dotStyle.textContent = `
         @keyframes move-dot {
           0% { offset-distance: 0%; }
           100% { offset-distance: 100%; }
         }
         
+        @keyframes draw-line {
+          0% { stroke-dashoffset: 1000; }
+          100% { stroke-dashoffset: 0; }
+        }
+
         .moving-dot {
           offset-path: path("${pathData}");
-          animation: move-dot 2s linear infinite;
+          animation: move-dot 4s linear infinite;
           offset-rotate: 0deg;
+        }
+
+        .animated-line {
+          stroke-dasharray: 1000;
+          animation: draw-line 4s linear infinite;
         }
       `;
       document.head.appendChild(dotStyle);
 
-      // Apply animation directly to the dot element
       const movingDot = chartRef.current.querySelector('.moving-dot');
       if (movingDot) {
-        // Remove any existing class
         (movingDot as SVGCircleElement).classList.remove('moving-dot');
-        
-        // Force a repaint using getBoundingClientRect() instead of offsetWidth
-        // This works for SVG elements
         void (movingDot as SVGCircleElement).getBoundingClientRect();
-        
-        // Add the class back
         (movingDot as SVGCircleElement).classList.add('moving-dot');
       }
 
