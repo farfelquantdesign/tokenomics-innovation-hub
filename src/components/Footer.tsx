@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -59,13 +60,13 @@ export default function Footer() {
 
       const pathData = generatePath();
       
+      // Update the chart line with the path data
       const chartLine = chartRef.current.querySelector('.chart-line');
       if (chartLine) {
         (chartLine as SVGPathElement).setAttribute('d', pathData);
-        // Add the animation class to the line
-        (chartLine as SVGPathElement).classList.add('animated-line');
       }
 
+      // Create or update the animation styles
       const dotStyle = document.createElement('style');
       dotStyle.id = 'dot-animation-style';
       const existingStyle = document.getElementById('dot-animation-style');
@@ -73,6 +74,7 @@ export default function Footer() {
         document.head.removeChild(existingStyle);
       }
 
+      // Define animation styles with slower timing (8s)
       dotStyle.textContent = `
         @keyframes move-dot {
           0% { offset-distance: 0%; }
@@ -86,22 +88,30 @@ export default function Footer() {
 
         .moving-dot {
           offset-path: path("${pathData}");
-          animation: move-dot 4s linear infinite;
+          animation: move-dot 8s linear infinite;
           offset-rotate: 0deg;
         }
 
         .animated-line {
           stroke-dasharray: 1000;
-          animation: draw-line 4s linear infinite;
+          stroke-dashoffset: 1000;
+          animation: draw-line 8s linear forwards infinite;
         }
       `;
       document.head.appendChild(dotStyle);
 
+      // Apply animations to both elements
       const movingDot = chartRef.current.querySelector('.moving-dot');
       if (movingDot) {
         (movingDot as SVGCircleElement).classList.remove('moving-dot');
         void (movingDot as SVGCircleElement).getBoundingClientRect();
         (movingDot as SVGCircleElement).classList.add('moving-dot');
+      }
+      
+      if (chartLine) {
+        (chartLine as SVGPathElement).classList.remove('animated-line');
+        void (chartLine as SVGPathElement).getBoundingClientRect();
+        (chartLine as SVGPathElement).classList.add('animated-line');
       }
 
       return () => {
@@ -149,7 +159,7 @@ export default function Footer() {
                   
                   {/* Main chart line - will be populated by JavaScript */}
                   <path
-                    className="chart-line"
+                    className="chart-line animated-line"
                     fill="none"
                     stroke="rgba(245, 242, 234, 0.8)"
                     strokeWidth="1.5"
