@@ -88,13 +88,14 @@
   /* Added support for motion-path animations */
   .moving-dot {
     offset-rotate: 0deg;
+    animation: move-dot 8s linear infinite;
   }
 
   /* Added support for line animation */
   .animated-line {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: draw-line 8s linear infinite; /* Match this with the JavaScript timing */
+    animation: draw-line 8s linear infinite; 
   }
 }
 

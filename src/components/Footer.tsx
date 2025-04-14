@@ -66,15 +66,16 @@ export default function Footer() {
         (chartLine as SVGPathElement).setAttribute('d', pathData);
       }
 
-      // Create or update the animation styles
-      const dotStyle = document.createElement('style');
-      dotStyle.id = 'dot-animation-style';
+      // Delete any existing animation style
       const existingStyle = document.getElementById('dot-animation-style');
       if (existingStyle) {
         document.head.removeChild(existingStyle);
       }
 
-      // Define animation styles with 8s timing for a slower animation
+      // Create a new style sheet with synchronized animations
+      const dotStyle = document.createElement('style');
+      dotStyle.id = 'dot-animation-style';
+      
       dotStyle.textContent = `
         @keyframes move-dot {
           0% { offset-distance: 0%; }
@@ -100,24 +101,23 @@ export default function Footer() {
       `;
       document.head.appendChild(dotStyle);
 
-      // Apply animations to both elements and force repaint
+      // Force reflow of elements
       const movingDot = chartRef.current.querySelector('.moving-dot');
       if (movingDot) {
-        (movingDot as SVGCircleElement).classList.remove('moving-dot');
-        void (movingDot as SVGCircleElement).getBoundingClientRect();
-        (movingDot as SVGCircleElement).classList.add('moving-dot');
+        movingDot.classList.remove('moving-dot');
+        void movingDot.getBoundingClientRect(); // Force reflow
+        movingDot.classList.add('moving-dot');
       }
       
       if (chartLine) {
-        (chartLine as SVGPathElement).classList.remove('animated-line');
-        void (chartLine as SVGPathElement).getBoundingClientRect();
-        (chartLine as SVGPathElement).classList.add('animated-line');
+        chartLine.classList.remove('animated-line');
+        void chartLine.getBoundingClientRect(); // Force reflow
+        chartLine.classList.add('animated-line');
       }
 
       return () => {
-        const styleElement = document.getElementById('dot-animation-style');
-        if (styleElement) {
-          document.head.removeChild(styleElement);
+        if (document.getElementById('dot-animation-style')) {
+          document.head.removeChild(document.getElementById('dot-animation-style')!);
         }
       };
     }
@@ -157,7 +157,7 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Main chart line - will be animated */}
+                  {/* Main chart line */}
                   <path
                     className="chart-line animated-line"
                     fill="none"
