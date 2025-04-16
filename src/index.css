@@ -90,7 +90,7 @@
 .chart-line {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw-line 6s linear infinite;
+  animation: draw-line 6s ease-in-out infinite;
 }
 
 .chart-dot {
@@ -111,7 +111,7 @@
   }
   
   .chart-line {
-    animation: draw-line-fallback 6s linear infinite !important;
+    animation: draw-line-fallback 6s ease-in-out infinite !important;
   }
 }
 

@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,18 +34,18 @@ export default function Footer() {
       const generatePath = () => {
         const points = [];
         const numPoints = 100;
-        let value = 35; // Starting value
+        let value = 40; // Starting value (lower)
         
         // Parameters to control the shape of the path
-        const volatility = 2.5; // How much it fluctuates
-        const upwardBias = 0.2; // Overall upward trend strength
+        const volatility = 5; // Increased volatility (was 2.5)
+        const upwardBias = 0.1; // Reduced upward bias for more natural movement
         
         for (let i = 0; i < numPoints; i++) {
           // Add upward bias to create the trend
           const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
           
           // Keep the value within reasonable bounds
-          value = Math.max(15, Math.min(value + randomChange, 45));
+          value = Math.max(20, Math.min(value + randomChange, 45));
           
           // Map to SVG coordinates
           const x = i * (100 / (numPoints - 1));
@@ -93,12 +92,12 @@ export default function Footer() {
         .chart-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 6s linear forwards infinite;
+          animation: draw-line 6s ease-in-out forwards infinite;
         }
         
         .chart-dot {
           opacity: 0;
-          animation: follow-path 6s linear forwards infinite;
+          animation: follow-path 6s ease-in-out forwards infinite;
         }
         
         @keyframes follow-path {
