@@ -1,3 +1,4 @@
+
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -78,6 +79,7 @@ export default function Footer() {
       }
 
       // Define keyframes for both the line drawing and the moving dot
+      // Set animation duration to 6 seconds and make it loop
       styleElement.textContent = `
         @keyframes draw-line {
           0% {
@@ -91,12 +93,12 @@ export default function Footer() {
         .chart-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 10s linear forwards;
+          animation: draw-line 6s linear forwards infinite;
         }
         
         .chart-dot {
           opacity: 0;
-          animation: follow-path 10s linear forwards;
+          animation: follow-path 6s linear forwards infinite;
         }
         
         @keyframes follow-path {

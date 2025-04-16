@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -89,7 +90,7 @@
 .chart-line {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw-line 10s linear forwards;
+  animation: draw-line 6s linear infinite;
 }
 
 .chart-dot {
@@ -110,7 +111,7 @@
   }
   
   .chart-line {
-    animation: draw-line-fallback 10s linear forwards !important;
+    animation: draw-line-fallback 6s linear infinite !important;
   }
 }
 
