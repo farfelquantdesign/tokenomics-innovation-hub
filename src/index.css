@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,52 +83,44 @@
   .transition-bezier {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
-  
-  /* Added support for motion-path animations */
-  .moving-dot {
-    offset-rotate: 0deg;
-    animation: move-dot 8s linear infinite;
-  }
-
-  /* Added support for line animation */
-  .animated-line {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw-line 8s linear infinite; 
-  }
 }
 
-/* Support for older browsers */
+/* Chart animation support */
+.chart-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 10s linear forwards;
+}
+
+.chart-dot {
+  offset-rotate: 0deg;
+}
+
+/* Support for browsers without offset-path */
 @supports not (offset-path: path('')) {
-  .moving-dot, .animated-line {
-    display: none;
+  .chart-dot {
+    animation: none !important;
+    opacity: 0;
+  }
+  
+  /* Fallback animation for the line */
+  @keyframes draw-line-fallback {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+  }
+  
+  .chart-line {
+    animation: draw-line-fallback 10s linear forwards !important;
   }
 }
 
-/* Add explicit keyframes for fade-in animation */
+/* General animations */
 @keyframes fade-in {
   0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Adding line drawing animation */
 @keyframes draw-line {
   0% { stroke-dashoffset: 1000; }
   100% { stroke-dashoffset: 0; }
-}
-
-/* Adding fallback animation for browsers that don't support offset-path */
-@supports not (offset-path: path('')) {
-  @keyframes dot-fallback {
-    0% { transform: translateX(0) translateY(0); }
-    25% { transform: translateX(25%) translateY(-15%); }
-    50% { transform: translateX(50%) translateY(-5%); }
-    75% { transform: translateX(75%) translateY(-20%); }
-    100% { transform: translateX(100%) translateY(-25%); }
-  }
-  
-  .moving-dot {
-    display: block !important;
-    animation: dot-fallback 8s linear infinite !important; /* Slowed down to 8s */
-  }
 }

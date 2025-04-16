@@ -1,4 +1,3 @@
-
 import { ArrowUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -15,7 +14,7 @@ export default function Footer() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 } // Lower threshold to trigger earlier
+      { threshold: 0.1 }
     );
 
     if (footerRef.current) {
@@ -31,28 +30,31 @@ export default function Footer() {
 
   useEffect(() => {
     if (isVisible && chartRef.current) {
-      // Generate a general uptrend with fluctuations for the chart path
+      // Generate a stock-like path with an upward trend
       const generatePath = () => {
         const points = [];
-        const numPoints = 100; // Good number of points for longer path
+        const numPoints = 100;
         let value = 35; // Starting value
-        const volatility = 2.5; // Max change per step
-        const upwardBias = 0.15; // Bias toward upward movement
+        
+        // Parameters to control the shape of the path
+        const volatility = 2.5; // How much it fluctuates
+        const upwardBias = 0.2; // Overall upward trend strength
         
         for (let i = 0; i < numPoints; i++) {
-          // Generate a biased random change (more likely to go up)
+          // Add upward bias to create the trend
           const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
           
-          // Ensure value stays within reasonable bounds
-          value = Math.max(10, Math.min(value + randomChange, 40));
+          // Keep the value within reasonable bounds
+          value = Math.max(15, Math.min(value + randomChange, 45));
           
-          // Calculate x position based on index
+          // Map to SVG coordinates
           const x = i * (100 / (numPoints - 1));
+          const y = 50 - value; // Invert y-axis for SVG
           
-          points.push([x, value]);
+          points.push([x, y]);
         }
         
-        // Create SVG path string from points
+        // Create SVG path string
         return points.map((point, i) => 
           `${i === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
         ).join(' ');
@@ -60,64 +62,66 @@ export default function Footer() {
 
       const pathData = generatePath();
       
-      // Update the chart line with the path data
+      // Apply the path to the SVG
       const chartLine = chartRef.current.querySelector('.chart-line');
       if (chartLine) {
         (chartLine as SVGPathElement).setAttribute('d', pathData);
       }
 
-      // Delete any existing animation style
-      const existingStyle = document.getElementById('dot-animation-style');
-      if (existingStyle) {
-        document.head.removeChild(existingStyle);
+      // Configure animation
+      const styleElement = document.createElement('style');
+      styleElement.id = 'chart-animation-style';
+      
+      // Remove any existing styles
+      if (document.getElementById('chart-animation-style')) {
+        document.head.removeChild(document.getElementById('chart-animation-style')!);
       }
 
-      // Create a new style sheet with synchronized animations
-      const dotStyle = document.createElement('style');
-      dotStyle.id = 'dot-animation-style';
-      
-      dotStyle.textContent = `
-        @keyframes move-dot {
-          0% { offset-distance: 0%; }
-          100% { offset-distance: 100%; }
+      // Define keyframes for both the line drawing and the moving dot
+      styleElement.textContent = `
+        @keyframes draw-line {
+          0% {
+            stroke-dashoffset: 1000;
+          }
+          100% {
+            stroke-dashoffset: 0;
+          }
         }
         
-        @keyframes draw-line {
-          0% { stroke-dashoffset: 1000; }
-          100% { stroke-dashoffset: 0; }
-        }
-
-        .moving-dot {
-          offset-path: path("${pathData}");
-          animation: move-dot 8s linear infinite;
-          offset-rotate: 0deg;
-        }
-
-        .animated-line {
+        .chart-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 8s linear infinite;
+          animation: draw-line 10s linear forwards;
+        }
+        
+        .chart-dot {
+          opacity: 0;
+          animation: follow-path 10s linear forwards;
+        }
+        
+        @keyframes follow-path {
+          0% {
+            offset-distance: 0%;
+            opacity: 1;
+          }
+          100% {
+            offset-distance: 100%;
+            opacity: 1;
+          }
         }
       `;
-      document.head.appendChild(dotStyle);
-
-      // Force reflow of elements
-      const movingDot = chartRef.current.querySelector('.moving-dot');
-      if (movingDot) {
-        movingDot.classList.remove('moving-dot');
-        void movingDot.getBoundingClientRect(); // Force reflow
-        movingDot.classList.add('moving-dot');
-      }
       
-      if (chartLine) {
-        chartLine.classList.remove('animated-line');
-        void chartLine.getBoundingClientRect(); // Force reflow
-        chartLine.classList.add('animated-line');
+      document.head.appendChild(styleElement);
+      
+      // Apply the path to the dot's offset-path
+      const chartDot = chartRef.current.querySelector('.chart-dot');
+      if (chartDot) {
+        (chartDot as SVGCircleElement).style.offsetPath = `path("${pathData}")`;
       }
 
       return () => {
-        if (document.getElementById('dot-animation-style')) {
-          document.head.removeChild(document.getElementById('dot-animation-style')!);
+        if (document.getElementById('chart-animation-style')) {
+          document.head.removeChild(document.getElementById('chart-animation-style')!);
         }
       };
     }
@@ -135,7 +139,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="hidden md:block bg-quantblack-800 p-6 overflow-hidden">
-              {/* Financial chart with dynamic animation */}
+              {/* Chart container */}
               <div className="w-full h-48 relative">
                 <svg 
                   ref={chartRef}
@@ -143,13 +147,13 @@ export default function Footer() {
                   viewBox="0 0 100 50" 
                   preserveAspectRatio="none"
                 >
-                  {/* Chart grid lines - background */}
-                  <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
-                  <line x1="0" y1="37.5" x2="100" y2="37.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
-                  <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                  {/* Grid lines */}
+                  <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="0" y1="12.5" x2="100" y2="12.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                  <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                  <line x1="0" y1="37.5" x2="100" y2="37.5" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
+                  <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Vertical grid lines */}
                   <line x1="0" y1="0" x2="0" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="20" y1="0" x2="20" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="40" y1="0" x2="40" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
@@ -157,19 +161,19 @@ export default function Footer() {
                   <line x1="80" y1="0" x2="80" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   <line x1="100" y1="0" x2="100" y2="50" stroke="rgba(245, 242, 234, 0.1)" strokeWidth="0.5" />
                   
-                  {/* Main chart line */}
+                  {/* Animated chart line */}
                   <path
-                    className="chart-line animated-line"
+                    className="chart-line"
                     fill="none"
                     stroke="rgba(245, 242, 234, 0.8)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
-                    d="M0,35 L100,12"
+                    d="M0,35 L100,15" // Initial path, will be replaced
                   />
                   
-                  {/* Moving dot that follows the path */}
+                  {/* Dot that follows the path */}
                   <circle
-                    className="moving-dot"
+                    className="chart-dot"
                     r="2"
                     fill="#f5f2ea"
                     style={{
