@@ -34,18 +34,18 @@ export default function Footer() {
       const generatePath = () => {
         const points = [];
         const numPoints = 100;
-        let value = 40; // Starting value (lower)
+        let value = 20; // Start even lower (was 40)
         
         // Parameters to control the shape of the path
-        const volatility = 5; // Increased volatility (was 2.5)
-        const upwardBias = 0.1; // Reduced upward bias for more natural movement
+        const volatility = 3; // Reduced volatility for slower movement
+        const upwardBias = 0.05; // Very slight upward bias
         
         for (let i = 0; i < numPoints; i++) {
           // Add upward bias to create the trend
           const randomChange = (Math.random() * 2 - 1 + upwardBias) * volatility;
           
           // Keep the value within reasonable bounds
-          value = Math.max(20, Math.min(value + randomChange, 45));
+          value = Math.max(10, Math.min(value + randomChange, 40));
           
           // Map to SVG coordinates
           const x = i * (100 / (numPoints - 1));
