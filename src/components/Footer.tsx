@@ -78,7 +78,7 @@ export default function Footer() {
       }
 
       // Define keyframes for both the line drawing and the moving dot
-      // Set animation duration to 6 seconds and make it loop
+      // Set animation duration to 4 seconds and make it loop
       styleElement.textContent = `
         @keyframes draw-line {
           0% {
@@ -92,12 +92,12 @@ export default function Footer() {
         .chart-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 6s ease-in-out forwards infinite;
+          animation: draw-line 4s ease-in-out forwards infinite;
         }
         
         .chart-dot {
           opacity: 0;
-          animation: follow-path 6s ease-in-out forwards infinite;
+          animation: follow-path 4s ease-in-out forwards infinite;
         }
         
         @keyframes follow-path {
