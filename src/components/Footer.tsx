@@ -37,8 +37,8 @@ export default function Footer() {
         let value = 5; // Starting value
         
         // Parameters to control the shape of the path
-        const volatility = 2.25; // Increased volatility
-        const upwardBias = 0.0425; // Increased upward bias
+        const volatility = 2.25;
+        const upwardBias = 0.05; // Increased upward bias
         
         for (let i = 0; i < numPoints; i++) {
           // Add upward bias to create the trend
@@ -78,7 +78,7 @@ export default function Footer() {
       }
 
       // Define keyframes for both the line drawing and the moving dot
-      // Set animation duration to 4 seconds and make it loop
+      // Set animation duration to 3 seconds and make it loop
       styleElement.textContent = `
         @keyframes draw-line {
           0% {
@@ -92,12 +92,12 @@ export default function Footer() {
         .chart-line {
           stroke-dasharray: 1000;
           stroke-dashoffset: 1000;
-          animation: draw-line 4s ease-in-out forwards infinite;
+          animation: draw-line 3s ease-in-out forwards infinite;
         }
         
         .chart-dot {
           opacity: 0;
-          animation: follow-path 4s ease-in-out forwards infinite;
+          animation: follow-path 3s ease-in-out forwards infinite;
         }
         
         @keyframes follow-path {
